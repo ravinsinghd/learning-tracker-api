@@ -2,11 +2,11 @@ var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const configData = require('./config-data');
 const trackersRouter = require('./routes/tracker');
 
-mongoose.connect(configData.connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
