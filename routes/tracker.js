@@ -12,9 +12,34 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/counts', function (req, res, next) {
-  trackerModel.aggregate([{ $group: { _id: '$category', count: { $sum: 1 } } }]).exec(function (err, data) {
-    res.json(data);
-  });
+  trackerModel
+    .aggregate([
+      {
+        $group: {
+          _id: {
+            category: '$category',
+            status: '$status',
+          },
+          count: {
+            $sum: 1,
+          },
+        },
+      },
+      {
+        $group: {
+          _id: '$_id.category',
+          statusCount: {
+            $addToSet: {
+              status: '$_id.status',
+              count: '$count',
+            },
+          },
+        },
+      },
+    ])
+    .exec(function (err, data) {
+      res.json(data);
+    });
 });
 
 module.exports = router;
