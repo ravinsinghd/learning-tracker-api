@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+var cors = require('cors');
 require('dotenv').config();
 
 const trackersRouter = require('./routes/tracker');
@@ -15,6 +16,7 @@ db.once('open', function () {
 
 var app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
