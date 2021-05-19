@@ -1,0 +1,8 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "strict": true
+  }
+}
