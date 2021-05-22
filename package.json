@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "tsc": "tsc",
-    "copy": "copyfiles \"bin/*\" .env web.config dist",
+    "copy": "copyfiles \"bin/*\" .env web.config package.json dist",
     "build": "npm run tsc && npm run copy"
   },
   "dependencies": {
