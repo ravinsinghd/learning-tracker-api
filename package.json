@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "tsc": "tsc",
     "copy": "copyfiles \"bin/*\" .env web.config package.json dist",
-    "copy_node_modules": "copyfiles \"node_modules/*\" dist",
+    "copy_node_modules": "copyfiles \"node_modules/**\" dist",
     "build": "npm run tsc && npm run copy && npm run copy_node_modules"
   },
   "dependencies": {
