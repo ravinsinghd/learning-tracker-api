@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 import * as express from 'express';
 import { Request, NextFunction, Response } from 'express';
-var logger = require('morgan');
 let mongoose = require('mongoose');
 var cors = require('cors');
 require('dotenv').config();
@@ -18,7 +17,6 @@ db.once('open', function () {
 const app = express();
 
 app.use(cors());
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
